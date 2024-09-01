@@ -1,0 +1,32 @@
+name: CI Build and Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up dependencies
+        run: sudo apt-get install -y clang clang-tidy llvm
+
+      - name: Build the project
+        run: make
+
+      - name: Store make artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-output
+          path: spreadsheet.out
+
+      - name: Launch unit tests for spredsheet features
+        run: ./spreadsheet.out
