@@ -1,0 +1,18 @@
+Checks: >
+  -clang-analyzer-*
+  -cppcoreguidelines-*
+  -modernize-*
+  -performance-*
+  -readability-*
+  -misc-*
+  -bugprone-*
+  -cert-*
+  -hicpp-*
+  -google-*
+  -llvm-*  # Enable all LLVM checks
+  -clang-diagnostic-*  # Enable all Clang diagnostic checks
+WarningsAsErrors: '*'
+HeaderFilterRegex: '.*'  # Include all headers
+AnalyzeTemporaryDtors: true
+FormatStyle: file  # Use .clang-format file in the project
+User: ''
